@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../CustomStyles/ThemeColors.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ButtonStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/TextBoxStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/TitleBarStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ProgressBarStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ScrollBarStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/GroupBoxStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/SliderStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ComboBoxStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/CheckBoxStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/RadioButtonStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/FavoriteCheckBoxStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ToggleButtonStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/TreeViewStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/TabControlStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ListViewStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ListBoxStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/ToolBarStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/MenuStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/CalendarStyles.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/NavigationListViewStyle.xaml"/>
+        <ResourceDictionary Source="../CustomStyles/UserButtonStyles.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Define theme colors -->
+    <Color x:Key="ThemeBackgroundColor">#111111</Color>
+    <Color x:Key="ThemeBackground2Color">#222222</Color>
+    <Color x:Key="ThemeBackground3Color">#333333</Color>
+    <Color x:Key="ThemeBackground4Color">#444444</Color>
+    <Color x:Key="ThemeForegroundColor">#FFFFFF</Color>
+    <Color x:Key="ThemeForeground2Color">#CCCCCC</Color>
+    <Color x:Key="ThemeDisabledColor">#555555</Color>
+    <Color x:Key="ThemeDisabledForegroundColor">#888888</Color>
+
+    <!-- Define brushes based on theme colors -->
+    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{StaticResource ThemeBackgroundColor}"/>
+    <SolidColorBrush x:Key="ThemeBackground2Brush" Color="{StaticResource ThemeBackground2Color}"/>
+    <SolidColorBrush x:Key="ThemeBackground3Brush" Color="{StaticResource ThemeBackground3Color}"/>
+    <SolidColorBrush x:Key="ThemeBackground4Brush" Color="{StaticResource ThemeBackground4Color}"/>
+    <SolidColorBrush x:Key="ThemeForegroundBrush" Color="{StaticResource ThemeForegroundColor}"/>
+    <SolidColorBrush x:Key="ThemeForeground2Brush" Color="{StaticResource ThemeForeground2Color}"/>
+    <SolidColorBrush x:Key="ThemeDisabledBrush" Color="{StaticResource ThemeDisabledColor}"/>
+    <SolidColorBrush x:Key="ThemeDisabledForegroundBrush" Color="{StaticResource ThemeDisabledForegroundColor}"/>
+
+</ResourceDictionary>

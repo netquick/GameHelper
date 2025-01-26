@@ -1,0 +1,20 @@
+﻿<Application x:Class="GameHelper.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:conv="clr-namespace:GameHelper.Converters"
+             xmlns:ext="clr-namespace:GameHelper.CustomMarkupExtensions"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- These URIs are for design-time only -->
+                <ResourceDictionary Source="pack://application:,,,/GameHelper;component/Themes/LightTheme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/GameHelper;component/CustomStyles/NavigationListViewStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <conv:SvgPathAndColorConverter x:Key="SvgPathAndColorConverter" />
+            <conv:ResourceDictionaryUriConverter x:Key="ResourceDictionaryUriConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

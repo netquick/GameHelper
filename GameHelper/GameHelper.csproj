@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\home.svg" />
+    <None Remove="Icons\person.svg" />
+    <None Remove="Icons\settings.svg" />
+    <None Remove="Images\placeholder_user.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CustomMarkupExtensions\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\home.svg" />
+    <Resource Include="Icons\person.svg" />
+    <Resource Include="Icons\settings.svg" />
+    <Content Include="Images\placeholder_user.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Strings.de-DE.Designer.cs">
+      <DependentUpon>Strings.de-DE.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Strings.en-US.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.en-US.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.de-DE.resx">
+      <LastGenOutput>Strings.de-DE.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

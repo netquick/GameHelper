@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Modern Slider Style -->
+    <Style TargetType="Slider">
+        <Setter Property="Background" Value="#2D2D2D"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid>
+                        <Track x:Name="PART_Track">
+                            <!-- Track line before the Thumb -->
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="Slider.DecreaseLarge" Background="{DynamicResource ThemeAccentBrush}" Opacity="1" IsHitTestVisible="False"/>
+                            </Track.DecreaseRepeatButton>
+                            <!-- Thumb -->
+                            <Track.Thumb>
+                                <Thumb>
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Grid>
+                                                <!-- Surrounding Rectangle -->
+                                                <Rectangle Fill="{DynamicResource ThemeBackground2Brush}" Width="18" Height="20" RadiusX="4" RadiusY="4"/>
+                                                <!-- Change this to your desired color -->
+                                                <!-- Dot -->
+                                                <Ellipse Fill="{DynamicResource ThemeAccentBrush}" Width="12" Height="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                            <!-- Track line after the Thumb -->
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="Slider.IncreaseLarge" Background="{DynamicResource ThemeBackground3Brush}" Opacity="1" IsHitTestVisible="False"/>
+                            </Track.IncreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- GroupBox Style -->
+    <Style TargetType="GroupBox">
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ThemeBackground2Brush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBackground2Brush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Border Background="{TemplateBinding Background}"
+                     BorderBrush="{TemplateBinding BorderBrush}"
+                     BorderThickness="{TemplateBinding BorderThickness}"
+                     CornerRadius="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Background="{TemplateBinding Background}"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             CornerRadius="5,5,0,0"
+                             Padding="5">
+                                <ContentPresenter ContentSource="Header"
+                                           RecognizesAccessKey="True"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                            <ContentPresenter Grid.Row="1"
+                                       Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

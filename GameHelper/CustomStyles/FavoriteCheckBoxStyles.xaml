@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="FavoriteButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="FilledStar">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="FilledStar">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Path x:Name="OutlineStar" Data="M 10,1 L 12,7 L 18,7 L 13,11 L 15,17 L 10,13 L 5,17 L 7,11 L 2,7 L 8,7 Z" Stroke="Black" Fill="Transparent"/>
+                        <Path x:Name="FilledStar" Data="M 10,1 L 12,7 L 18,7 L 13,11 L 15,17 L 10,13 L 5,17 L 7,11 L 2,7 L 8,7 Z" Fill="Gold" Visibility="Collapsed"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+    <!-- FavoriteIcon Checkbox-->
+    <Style x:Key="FavoriteCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FilledStar" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FilledStar" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FilledStar" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!-- Padding sets the star Size-->
+
+                        <Border Background="Transparent" Padding="12">
+
+                            <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid>
+                                    <Grid.LayoutTransform>
+                                        <!-- Adjust the ScaleX and ScaleY values to scale the star size -->
+                                        <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                                    </Grid.LayoutTransform>
+                                    <Path x:Name="OutlineStar"
+                                        Data="M 10,1 L 12,7 L 18,7 L 13,11 L 15,17 L 10,13 L 5,17 L 7,11 L 2,7 L 8,7 Z" 
+                                        Stroke="#DDDDDD" 
+                                        Fill="Transparent"/>
+                                    <Path x:Name="FilledStar" 
+                                        Data="M 10,1 L 12,7 L 18,7 L 13,11 L 15,17 L 10,13 L 5,17 L 7,11 L 2,7 L 8,7 Z" 
+                                        Fill="Gold" 
+                                        Visibility="Collapsed"/>
+                                </Grid>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="FilledStar" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
