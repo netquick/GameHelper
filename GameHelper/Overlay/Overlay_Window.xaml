@@ -1,0 +1,35 @@
+﻿<Window x:Class="GameHelper.Overlay.Overlay_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameHelper.Overlay"
+        xmlns:uc="clr-namespace:GameHelper.UserControls"
+        xmlns:vm="clr-namespace:GameHelper.ViewModels"
+        mc:Ignorable="d"
+        Title="Overlay" 
+        Height="450" Width="180"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Topmost="True">
+    <Window.DataContext>
+        <vm:OverlayViewModel />
+    </Window.DataContext>
+    <Border Background="#CC222222" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Game Helper" Foreground="{DynamicResource ThemeAccentBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <ListView Grid.Row="1" ItemsSource="{Binding OverlayButtons}" Background="Transparent" BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <uc:Overlay_Button />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="GameHelper.UserControls.Keybind"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.microsoft.com/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameHelper.UserControls"
+             Width="383" Height="134">
+    <Border Background="{DynamicResource ThemeBackgroundBrush}" CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="10,5,10,0" Content="Name" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}"/>
+            <TextBox Grid.Column="1" Grid.ColumnSpan="4" Margin="5, 5, 10, 5" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}" Height="26" Text="{Binding Name, Mode=TwoWay}"/>
+            <Label Grid.Column="0" Margin="10,36,10,0" Content="Keybind" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}"/>
+            <TextBox x:Name="KeybindTextBox" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,36,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}" Height="26" Text="{Binding Keybind, Mode=TwoWay}"/>
+            <Button Grid.Column="4" Content="Set" Height="26" Margin="5,36,10,0" VerticalAlignment="Top" Click="SetButton_Click"/>
+            <Label Grid.Column="0" Content="Action" Margin="10,67,10,0" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}"/>
+            <ComboBox Grid.Column="1" Grid.ColumnSpan="4" Margin="5,67,10,0" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}" Height="26" SelectedItem="{Binding Action, Mode=TwoWay}"/>
+            <Label Grid.Column="0" Content="Key" Margin="10,98,10,0" VerticalAlignment="Top" Foreground="{DynamicResource ThemeForegroundBrush}"/>
+            <ComboBox Grid.Column="1" Margin="5,98,5,0" VerticalAlignment="Top" Height="26" ItemsSource="{Binding AllKeys}" SelectedItem="{Binding Key, Mode=TwoWay}"/>
+            <Label Grid.Column="2" Content="Interval" Margin="0,98,10,0" VerticalAlignment="Top" Width="50" Foreground="{DynamicResource ThemeForegroundBrush}"/>
+            <Slider Grid.Column="3" Grid.ColumnSpan="2" Margin="5,98,10,5" VerticalAlignment="Top" Height="26" Width="120" Value="{Binding Interval, Mode=TwoWay}"/>
+        </Grid>
+    </Border>
+</UserControl>

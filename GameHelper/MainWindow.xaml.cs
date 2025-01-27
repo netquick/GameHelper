@@ -10,14 +10,16 @@ using GameHelper.Helpers;
 using GameHelper.Objects;
 using GameHelper.ViewModels;
 using GameHelper.Views;
-
+using GameHelper.GameViews;
 namespace GameHelper
 {
     public partial class MainWindow : Window
     {
         private readonly MessageService _messageService;
         private DispatcherTimer _progressBarTimer;
+        private Overlay.Overlay_Window overlayWindow;
 
+        // Constructor
         public MainWindow()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace GameHelper
                 CurrentUserImage = "Images/placeholder_user.jpg" // Ensure this path is correct
             };
 
-            // Initialize the messageService
+            // Initialize the message service
             _messageService = MessageService.Instance;
             _messageService.NotificationReceived += OnNotificationReceived;
             _messageService.ProgressUpdated += OnProgressUpdated;
@@ -50,12 +52,13 @@ namespace GameHelper
             this.Loaded += MainWindow_Loaded;
         }
 
-
+        // Event handler for window loaded
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // Any additional logic to run when the window is loaded
         }
 
+        // Message service event handlers
         private void OnNotificationReceived(string message)
         {
             Dispatcher.Invoke(() =>
@@ -78,12 +81,13 @@ namespace GameHelper
             });
         }
 
+        // Method to get the message service instance
         public MessageService GetMessageService()
         {
             return _messageService;
         }
 
-        // Main Layout
+        // Methods to handle window dragging and resizing
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Allows the window to be dragged around by the custom title bar
@@ -93,7 +97,6 @@ namespace GameHelper
             }
         }
 
-        // Method to implement window resizing functionality on double-click
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2) // Check if it's a double-click
@@ -163,17 +166,26 @@ namespace GameHelper
             OnBottomDragDelta(sender, e);
         }
 
-        // Method to handle window resizing
-        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        // Methods to handle overlay window
+        private void chkOverlay_Checked(object sender, RoutedEventArgs e)
         {
-            Dispatcher.BeginInvoke(new Action(() =>
+            if (overlayWindow == null)
             {
-                searchBar.SelectAll();
-            }), System.Windows.Threading.DispatcherPriority.Input);
-            _messageService.LogMessage("Got focus");
+                overlayWindow = new Overlay.Overlay_Window();
+                overlayWindow.Owner = this; // Optional: set the owner of the overlay window
+            }
+            overlayWindow.Show();
         }
 
-        // Method to handle navigation bar
+        private void chkOverlay_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (overlayWindow != null)
+            {
+                overlayWindow.Hide();
+            }
+        }
+
+        // Methods to handle navigation bar
         private Page lastNavigatedPage = null;
         public Page LastNavigatedPage
         {
@@ -189,11 +201,15 @@ namespace GameHelper
             if (NavigationListView != null)
             {
                 NavigationListView.ItemsSource = new List<NavigationItem>
-        {
-            new NavigationItem { Icon = "Icons/home.svg", Text = resourceManager.GetString("NavigationHome", CultureInfo.CurrentUICulture) ?? "Home", IsActive = true },
-            new NavigationItem { Icon = "Icons/settings.svg", Text = resourceManager.GetString("NavigationSettings", CultureInfo.CurrentUICulture) ?? "Settings" },
-            // Add other items here
-        };
+                    {
+                        new NavigationItem { Icon = "Icons/home.svg", Text = resourceManager.GetString("NavigationHome", CultureInfo.CurrentUICulture) ?? "Home", IsActive = true },
+                        new NavigationItem { Icon = "Icons/layers.svg", Text = resourceManager.GetString("NavigationHelp", CultureInfo.CurrentUICulture) ?? "Overlay" },
+                        new NavigationItem { Icon = "Icons/joystick.svg", Text = resourceManager.GetString("NavigationExit", CultureInfo.CurrentUICulture) ?? "Game settings" },
+                        new NavigationItem { Icon = "Icons/keys.svg", Text = resourceManager.GetString("NavigationExit", CultureInfo.CurrentUICulture) ?? "Keybinds" },
+                        new NavigationItem { Icon = "Icons/server.svg", Text = resourceManager.GetString("NavigationExit", CultureInfo.CurrentUICulture) ?? "Server" },
+                        new NavigationItem { Icon = "Icons/settings.svg", Text = resourceManager.GetString("NavigationSettings", CultureInfo.CurrentUICulture) ?? "Settings" },
+                        // Add other items here
+                    };
             }
             else
             {
@@ -210,12 +226,12 @@ namespace GameHelper
             }
         }
 
-
-
-
         // Define the pages to navigate to
         private Start startPage = Start.Instance;
         private Settings settingsPage = Settings.Instance;
+        private Default_Overlay Overlay = Default_Overlay.Instance;
+        private Default_Keybinds Keybinds = Default_Keybinds.Instance;
+        private Default_Gamesettings gamesettingsPage = Default_Gamesettings.Instance;
 
         // Method to handle navigation list view selection changed
         private void NavigationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -240,6 +256,15 @@ namespace GameHelper
                         break;
                     case "Settings":
                         navigateToPage = settingsPage;
+                        break;
+                    case "Overlay":
+                        navigateToPage = Overlay;
+                        break;
+                    case "Keybinds":
+                        navigateToPage = Keybinds;
+                        break;
+                    case "Game settings":
+                        navigateToPage = gamesettingsPage;
                         break;
                 }
 

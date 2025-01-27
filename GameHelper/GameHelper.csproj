@@ -10,19 +10,28 @@
 
   <ItemGroup>
     <None Remove="Icons\home.svg" />
+    <None Remove="Icons\joystick.svg" />
+    <None Remove="Icons\keys.svg" />
+    <None Remove="Icons\layers.svg" />
     <None Remove="Icons\person.svg" />
+    <None Remove="Icons\server.svg" />
     <None Remove="Icons\settings.svg" />
     <None Remove="Images\placeholder_user.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="CustomMarkupExtensions\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Icons\home.svg" />
+    <Resource Include="Icons\joystick.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\keys.svg" />
+    <Resource Include="Icons\layers.svg" />
     <Resource Include="Icons\person.svg" />
+    <Resource Include="Icons\server.svg" />
     <Resource Include="Icons\settings.svg" />
     <Content Include="Images\placeholder_user.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
